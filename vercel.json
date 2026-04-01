@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/check-rate?secret=YOUR_ACTUAL_SECRET",
-      "schedule": "*/1 * * * *"
+      "schedule": "0 9 * * *"
     }
   ]
 }
