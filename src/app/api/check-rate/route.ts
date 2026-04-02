@@ -6,6 +6,14 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get('secret');
 
+// Check for your manual secret OR the Vercel Cron Header
+  const isVercelCron = request.headers.get('x-vercel-cron') === '1';
+  const isManualAuth = secret === process.env.CRON_SECRET;
+
+  if (!isVercelCron && !isManualAuth) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   if (secret !== process.env.CRON_SECRET) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
