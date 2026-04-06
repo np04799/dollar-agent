@@ -61,15 +61,15 @@ export async function GET(request: Request) {
     // -----------------------------
     await transporter.sendMail({
       from: `"Dollar Agent" <${process.env.GMAIL_USER}>`,
-      to: "meghapandit87@gmail.com",
-      cc: "niteshpandit@gmail.com",
-      subject: `💰 Agent Report: ₹${rateINR} | C$${rateCAD}`,
+      to: "nitesh.pandit@tcs.com",
+      //cc: "jayesh.shah@tcs.com",
+      subject: `💰 Live Currency Monitoring PoC : ₹${rateINR} | C$${rateCAD}`,
       text: `Your automated agent check:
 1 USD = ₹${rateINR} INR
 1 USD = C$${rateCAD} CAD`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-          <h2 style="color: #2563eb;">Dollar Rate Update</h2>
+          <h2 style="color: #2563eb;">Live Currency Monitoring</h2>
 
           <div style="margin-top: 10px;">
             <p style="font-size: 20px; font-weight: bold;">🇺🇸 → 🇮🇳</p>
@@ -80,7 +80,7 @@ export async function GET(request: Request) {
             <p style="font-size: 20px; font-weight: bold;">🇺🇸 → 🇨🇦</p>
             <p style="font-size: 24px; font-weight: bold;">$1 USD = C$ ${rateCAD} CAD</p>
           </div>
-
+          <a href="https://dollar-agent-lqkk.vercel.app/">Click Here</a>
           <p style="color: #666; margin-top: 20px;">Your agent successfully checked both rates and sent this update.</p>
         </div>
       `,
