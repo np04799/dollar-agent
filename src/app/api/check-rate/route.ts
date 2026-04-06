@@ -60,9 +60,9 @@ export async function GET(request: Request) {
     // 5. Send Email
     // -----------------------------
     await transporter.sendMail({
-      from: `"Dollar Agent" <${process.env.GMAIL_USER}>`,
+      from: `"Currency Monitoring" <${process.env.GMAIL_USER}>`,
       to: "nitesh.pandit@tcs.com",
-      //cc: "jayesh.shah@tcs.com",
+      cc: "jayesh.shah@tcs.com",
       subject: `💰 Live Currency Monitoring PoC : ₹${rateINR} | C$${rateCAD}`,
       text: `Your automated agent check:
 1 USD = ₹${rateINR} INR
