@@ -68,8 +68,9 @@ export default async function Dashboard() {
 
         <div className="bg-slate-100 p-10 rounded-2xl border-2 border-dashed border-slate-200 text-center">
           <p className="text-slate-500">
-            History Chart will appear here once we enable{" "}
-            <strong>Firebase Memory</strong>.
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <a href="/csv-agent"> Click Here for CSV Intelligence Agent </a> {" "}
+            </div>
           </p>
         </div>
       </div>
