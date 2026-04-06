@@ -12,18 +12,18 @@ export async function POST(request: Request) {
 
     // 2. Create the "System Instruction"
     const systemPrompt = `
-      You are a professional Data Analyst Agent. 
-      I will provide you with data from a CSV file in JSON format.
+      You are an Expert Business Intelligence Agent. 
+      Analyze this CSV data (JSON): ${JSON.stringify(csvData.slice(0, 300))}
+
+      Provide a high-level analysis with these exact sections:
       
-      DATA: ${JSON.stringify(csvData.slice(0, 100))} // Sending first 100 rows for analysis
+      1. **Predictive Trend**: Based on the patterns (dates, numbers, or categories), what is the most likely outcome for the next 30 days? Be specific.
+      
+      2. **Actionable Step**: Provide ONE "High-Impact" recommendation. What should the user do TODAY to improve these results?
+      
+      3. **Data Visualization Map**: Suggest which columns would be best to plot on a Chart (e.g., "Date" on X-axis, "Amount" on Y-axis).
 
-      YOUR TASK:
-      ${userQuestion 
-        ? `Answer this specific question concisely: ${userQuestion}` 
-        : "Provide a crisp, 3-bullet point summary of the key trends in this data."
-      }
-
-      Keep the tone professional and the output in clean Markdown.
+      Keep the response professional, concise, and formatted in clean Markdown.
     `;
 
     const result = await model.generateContent(systemPrompt);
